@@ -137,8 +137,12 @@ Classify the failure first; Tor is the answer to two shapes only.
   in your region", "not available in your country" or the like) is a block, and Tor applies - seen in real use on
   a US newspaper's site: a plain `curl -m 20` got `403` "This content is not available in your region"; through
   a `us` exit the same URL returned `200`, a real front page (the run under "A real run").
-- **A challenge, not a block:** `403` with a "Just a moment..." page (Cloudflare) or a captcha is bot protection;
-  Tor does not help there.
+- **A challenge, not a block:** `403` with a "Just a moment..." page (Cloudflare) or a captcha is a check aimed at
+  the client, not at your country, so Tor does not help - but it is not the end of the road. A "Just a moment..."
+  JavaScript check usually passes in an ordinary browser (one browser read, for example with Playwright, handled
+  it in real use); a plain "I am not a robot" checkbox is one click you make yourself; an image or puzzle captcha
+  is a human-verification step these scripts cannot pass - do it by hand in a browser if you want the page. Try
+  those before giving up on the page.
 - **A sibling host:** a blocked `www` host can have an unblocked sibling serving the same data - in real use a
   federal agency's `www.agency.example` hung while its database answered directly on `portal.agency.example`,
   found in one fetch from the links on an archived copy of the blocked page. Cheaper than a Tor start.
@@ -528,9 +532,11 @@ being the browser version in the recipe's user-agent, allowed only as `Chrome/12
 ## Intended use
 This toolkit is for reading public pages that refuse a region: the site hangs, or answers `403` with a region
 text, for your country, and serves the same page to the country you pick. It is a per-process exit - one
-`curl` pointed at the port - and nothing system-wide. It is not for logins or accounts, not for getting past bot
-protection or a human verification (a captcha, a "Just a moment..." page), and not for anything a site's terms
-or your law forbid; you are responsible for lawful use in your own jurisdiction (see `DISCLAIMER.md`).
+`curl` pointed at the port - and nothing system-wide. It is not for logins or accounts. A bot check or a human verification (a "Just a moment..." page, a
+checkbox, a captcha) is not something these scripts solve - a browser read often passes the first, you click the
+second yourself, the third needs a person; that is the toolkit's limit, not a rule about what you may read.
+Whether a site's terms and your law allow a read is yours to judge; you are responsible for lawful use in your
+own jurisdiction (see `DISCLAIMER.md`).
 
 ## Pinned as of October 2026
 - **Tor Expert Bundle `15.0.24`** - the `TOR_SETUP_VERSION` default.

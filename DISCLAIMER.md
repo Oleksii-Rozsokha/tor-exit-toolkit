@@ -10,9 +10,10 @@ jurisdiction and under the terms of the sites you read. The authors do not advis
 
 **Intended use, and nothing else.** The toolkit exists for one purpose, stated in the README's "Intended use"
 section: reading public pages that refuse a region, through a per-process Tor exit, with one `curl` command
-pointed at the port. It is not for logins or accounts, not for getting past bot protection or a human
-verification, not for anything system-wide, and not for anything a site's terms or your law forbid. Any other
-use is outside what this software is for.
+pointed at the port. It is not for logins or accounts and not for anything system-wide. A bot check or a human verification
+(a "Just a moment..." page, a checkbox, a captcha) is not something these scripts solve - that is their limit,
+not a rule about what you may read; whether a site's terms and your law allow a read is yours to judge (see
+"Lawful use" above). Any other use is outside what this software is for.
 
 **What the exit sees.** A Tor exit relay is a stranger's machine. Anything you send through it that is not
 end-to-end encrypted can be read there. The recipe in the README requests `https://` only and refuses a
